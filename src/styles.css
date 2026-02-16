@@ -1,0 +1,492 @@
+@font-face {
+  font-family: "Waterlily Script";
+  src: url("/assets/Waterlily Script.ttf") format("truetype");
+  font-display: swap;
+}
+
+:root {
+  font-family: "Waterlily Script", "Segoe UI", sans-serif;
+  color: #1b140f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #f6beaa;
+}
+
+.app {
+  width: 100vw;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 8px;
+}
+
+.screen {
+  width: 1000px;
+  height: 700px;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.menu-actions {
+  position: absolute;
+  left: 430px;
+  top: 535px;
+  display: grid;
+  gap: 15px;
+}
+
+.image-button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+}
+
+.image-button img {
+  width: 150px;
+  height: 50px;
+}
+
+.menu-reset-button {
+  width: 150px;
+  height: 44px;
+  border: 2px solid #784f3f;
+  border-radius: 10px;
+  background: rgba(255, 245, 232, 0.92);
+  color: #4d2f23;
+  font-family: "Waterlily Script", "Segoe UI", sans-serif;
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.menu-reset-button:hover {
+  background: rgba(255, 236, 217, 0.98);
+}
+
+.instructions-overlay {
+  position: absolute;
+  left: 90px;
+  top: 100px;
+}
+
+.instructions-canvas {
+  width: 1000px;
+  height: 700px;
+  display: block;
+}
+
+.back-button {
+  position: absolute;
+  right: 30px;
+  top: 14px;
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+}
+
+.back-button img {
+  width: 100px;
+  height: 50px;
+}
+
+.game-canvas {
+  width: 1000px;
+  height: 700px;
+  border-radius: 14px;
+  image-rendering: auto;
+}
+
+.hud {
+  width: 1000px;
+  height: 700px;
+  margin-top: -800px;
+  position: relative;
+  pointer-events: auto;
+  z-index: 10;
+}
+
+.in-game {
+  right: 20px;
+  top: 10px;
+}
+
+.panel-buttons {
+  position: absolute;
+  left: 20px;
+  bottom: 50px;
+  display: flex;
+  gap: 20px;
+}
+
+.panel-buttons button {
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.panel-buttons button.active {
+  outline: 2px solid #2f6d45;
+  outline-offset: 2px;
+}
+
+.panel-buttons img {
+  width: 200px;
+  height: 50px;
+}
+
+.sound-buttons {
+  position: absolute;
+  right: 20px;
+  bottom: 50px;
+  display: flex;
+  gap: 12px;
+}
+
+.sound-buttons button {
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+}
+
+.sound-buttons img {
+  width: 50px;
+  height: 50px;
+}
+
+.panel-content {
+  position: absolute;
+  left: 0;
+  top: 396px;
+  width: 375px;
+  height: 150px;
+  color: #1b140f;
+  font-size: 16px;
+  overflow: hidden;
+  z-index: 5;
+  pointer-events: auto;
+}
+
+.panel-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.restock-panel select {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  width: 130px;
+  z-index: 2;
+}
+
+.restock-item {
+  position: absolute;
+  left: 40px;
+  top: 32px;
+  width: 70px;
+  height: 70px;
+  z-index: 2;
+}
+
+.icon-btn {
+  position: absolute;
+  border: none;
+  background: transparent;
+  padding: 0;
+  z-index: 4;
+  cursor: pointer;
+}
+
+.icon-btn img {
+  width: 50px;
+  height: 50px;
+}
+
+.icon-btn.p1 {
+  left: 170px;
+  top: 10px;
+}
+
+.icon-btn.m1 {
+  left: 170px;
+  top: 70px;
+}
+
+.icon-btn.p10 {
+  left: 230px;
+  top: 10px;
+}
+
+.icon-btn.m10 {
+  left: 230px;
+  top: 70px;
+}
+
+.restock-action {
+  position: absolute;
+  left: 15px;
+  top: 105px;
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  z-index: 4;
+}
+
+.restock-action img {
+  width: 120px;
+  height: 40px;
+}
+
+.restock-text {
+  position: absolute;
+  left: 292px;
+  top: 8px;
+  z-index: 2;
+  width: 80px;
+  font-size: 14px;
+  line-height: 1.2;
+  font-family: "Waterlily Script", "Segoe UI", sans-serif;
+  color: #1f1620;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.55);
+  pointer-events: none;
+}
+
+.restock-text p {
+  margin: 4px 0;
+}
+
+.orders-panel {
+  overflow-y: auto;
+  height: 186px;
+  padding: 6px 8px;
+  background: #ffe2df url("/assets/ordersBackground.png") center/cover no-repeat;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.orders-panel::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.orders-header {
+  font-family: "Waterlily Script", "Segoe UI", sans-serif;
+  font-size: 26px;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+  margin: 2px 4px 8px;
+}
+
+.order-card {
+  position: relative;
+  width: 350px;
+  height: 100px;
+  margin-bottom: 6px;
+}
+
+.order-card img {
+  width: 100%;
+  height: 100%;
+}
+
+.order-copy {
+  position: absolute;
+  inset: 0;
+  padding: 8px 14px;
+  font-size: 12px;
+  font-family: "Segoe UI", sans-serif;
+  font-weight: 600;
+}
+
+.order-num {
+  position: absolute;
+  left: 43px;
+  top: 31px;
+  font-size: 24px;
+  font-family: "Waterlily Script", "Segoe UI", sans-serif;
+}
+
+.order-value {
+  position: absolute;
+  color: #2d2021;
+  font-weight: 700;
+}
+
+.order-value-ingredients {
+  left: 108px;
+  top: 37px;
+  width: 108px;
+  font-size: 15px;
+  line-height: 1.02;
+  font-family: "Waterlily Script", "Segoe UI", sans-serif;
+  max-height: 34px;
+  white-space: normal;
+  overflow: hidden;
+  overflow-wrap: anywhere;
+}
+
+.order-value-cost {
+  right: 22px;
+  top: 3px;
+  font-size: 24px;
+  font-family: "Waterlily Script", "Segoe UI", sans-serif;
+}
+
+.order-value-earned {
+  right: 22px;
+  top: 36px;
+  font-size: 24px;
+  font-family: "Waterlily Script", "Segoe UI", sans-serif;
+}
+
+.order-icons {
+  position: absolute;
+  left: 210px;
+  bottom: 8px;
+  display: flex;
+  gap: 4px;
+}
+
+.order-icons img {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+
+.empty-orders {
+  padding: 10px;
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.upgrades-panel {
+  position: absolute;
+  left: 300px;
+  top: 150px;
+  width: 400px;
+  height: 400px;
+  padding: 0;
+}
+
+.upgrade-btn {
+  position: absolute;
+  z-index: 4;
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+}
+
+.upgrade-btn img {
+  width: 100px;
+  height: 25px;
+}
+
+.upgrade-btn.ad {
+  left: 63px;
+  top: 183px;
+}
+
+.upgrade-btn.energy {
+  left: 237px;
+  top: 183px;
+}
+
+.upgrade-btn.cute {
+  left: 63px;
+  top: 331px;
+}
+
+.upgrade-btn.max {
+  left: 237px;
+  top: 331px;
+}
+
+.upgrade-meta {
+  position: absolute;
+  z-index: 4;
+  color: #ffffff;
+  font-family: "Waterlily Script", "Segoe UI", sans-serif;
+  font-size: 14px;
+  line-height: 1.02;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+  pointer-events: none;
+}
+
+.upgrade-meta p {
+  margin: 0;
+}
+
+.upgrade-meta.ad {
+  left: 49px;
+  top: 152px;
+}
+
+.upgrade-meta.energy {
+  left: 223px;
+  top: 152px;
+}
+
+.upgrade-meta.cute {
+  left: 49px;
+  top: 296px;
+}
+
+.upgrade-meta.max {
+  left: 223px;
+  top: 296px;
+}
+
+@media (max-width: 1100px) {
+  .screen,
+  .game-canvas,
+  .hud {
+    width: 100%;
+    max-width: 1000px;
+    aspect-ratio: 10 / 7;
+    height: auto;
+  }
+}
+
+.crash-screen {
+  background: #f4b8a7;
+}
+
+.crash-card {
+  background: #fff7f3;
+  border: 2px solid #8a4031;
+  border-radius: 10px;
+  padding: 16px;
+  max-width: 640px;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.crash-card h1 {
+  margin: 0 0 8px;
+  font-size: 22px;
+}
+
+.crash-card p {
+  margin: 4px 0;
+}
