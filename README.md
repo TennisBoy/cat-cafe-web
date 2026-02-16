@@ -1,4 +1,10 @@
-# React + TypeScript + Vite
+#Cat Cafe game web adaptation
+Original game made by [normal-newby](https://github.com/normal-newby) and friend.
+[Here](https://github.com/normal-newby/Cat-cafe-game)
+
+Made with vibe coding through React + TypeScript + Vite.
+
+
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
