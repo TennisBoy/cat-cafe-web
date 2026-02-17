@@ -38,7 +38,7 @@ export function createInitialGameState(): GameState {
       sHeld: false,
       dHeld: false,
       heldItem: null,
-      money: 100,
+      money: 1000,
       tips: 0,
       moneyDelta: 0,
       moneyDeltaAt: 0,
